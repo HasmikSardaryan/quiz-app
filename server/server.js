@@ -1,6 +1,7 @@
-import express from 'express'
-import sequelize from "./db.js"; 
-import dotenv from "dotenv";
+const express = require('express');
+const dotenv = require('dotenv');
+require('./db.js')
+const quizRouter = require('./routers/quizRouters');
 
 dotenv.config();
 
@@ -8,21 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // extended - handels nested objects/arrays
+app.use('/quiz', quizRouter);
 
-(async () => {
-    try {
-      await sequelize.authenticate();
-      console.log("Database connected!");
 
-      await sequelize.sync({force: true});
-      console.log("Tables synced!");
-
-      const PORT = process.env.PORT || 3001;
-      app.listen(PORT, () => {
-        console.log(`Server listens on http://localhost:${PORT}`);
-      });
-  
-    } catch (error) {
-      console.error("Database connection failed:", error);
-    }
-})();
+app.listen(3000, () => console.log('http://localhost:3000'))

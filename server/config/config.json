@@ -2,9 +2,10 @@
   "development": {
     "username": "root",
     "password": "hasmik123",
-    "database": "quiz_app",
+    "database": "quiz2_app",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   },
   "test": {
     "username": "root",

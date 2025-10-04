@@ -8,10 +8,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    id: DataTypes.NUMBER
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    }
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'user'
   });
   return User;
 };
